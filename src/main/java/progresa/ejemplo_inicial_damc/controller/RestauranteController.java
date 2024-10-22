@@ -26,6 +26,7 @@ public class RestauranteController {
 
     @Autowired
     RestauranteService restauranteService;
+    @Autowired
     CategoriaService categoriaService;
 
     @GetMapping("/lista")
@@ -109,7 +110,7 @@ public class RestauranteController {
         restaurante.setDireccion(direccion);
 
         // Categoría
-        Categoria categoria = null;
+        Categoria categoria;
         if (categoriaService.getByCategoria(
                 restauranteDto.getCategoria()).isPresent()){
             categoria = categoriaService.getByCategoria(restauranteDto
@@ -126,7 +127,8 @@ public class RestauranteController {
         categoria.getListaRestaurantes().add(restaurante);
         restaurante.setCategoria(categoria);
 
-        restauranteService.save(restaurante);
+        categoriaService.save(categoria);
+        //restauranteService.save(restaurante);
         return new ResponseEntity<>(new Mensaje("Restaurante creado"),
                 HttpStatus.CREATED);
     }
@@ -175,8 +177,8 @@ public class RestauranteController {
             newImagen.setRestaurante(restaurante);
             imagenes.add(newImagen);
         }
-
-        restaurante.setListaImagenes(imagenes);
+        restaurante.getListaImagenes().clear();
+        restaurante.getListaImagenes().addAll(imagenes);
 
 
         // DIRECCIÓN
@@ -192,7 +194,7 @@ public class RestauranteController {
                 restauranteDto.getDireccion().getNumero());
 
         // Categoría
-        Categoria categoria = null;
+        Categoria categoria;
         if (categoriaService.getByCategoria(
                 restauranteDto.getCategoria()).isPresent()){
             categoria = categoriaService.getByCategoria(restauranteDto
@@ -209,7 +211,8 @@ public class RestauranteController {
         categoria.getListaRestaurantes().add(restaurante);
         restaurante.setCategoria(categoria);
 
-        restauranteService.save(restaurante);
+        categoriaService.save(categoria);
+        //restauranteService.save(restaurante);
         return new ResponseEntity<>(new Mensaje("Restaurante actualizado"),
                 HttpStatus.OK);
     }

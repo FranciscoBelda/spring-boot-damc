@@ -29,11 +29,11 @@ public class Restaurante {
     // @PrimaryKeyJoinColumn // Clave primaria
     private Direccion direccion;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurante")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurante", orphanRemoval = true)
     @JsonManagedReference
     private Set<Imagen> listaImagenes;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 }
