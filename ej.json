@@ -1,0 +1,45 @@
+{
+  "restaurante": {
+    "id": 1,
+    "nombre": "Taco Bell",
+    "imagenes": [
+      {
+        "id": "1",
+        "nombre": "/assets/images/taco01.png",
+        "restaurante": {
+          "id": 1,
+          "nombre": "Taco Bell",
+          "imagenes": [
+            {
+              "id": "1",
+              "nombre": "/assets/images/taco01.png",
+              "restaurante": {
+                "id": 1,
+                "nombre": "Taco Bell",
+                "imagenes": [
+                  {
+                    "id": "1",
+                    "nombre": "/assets/images/taco01.png",
+                    "restaurante": {
+                      "id": 1,
+                      "nombre": "Taco Bell",
+                      "imagenes": [
+                        {
+                          "id": "1",
+                          "nombre": "/assets/images/taco01.png",
+                          "restaurante": {
+
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
